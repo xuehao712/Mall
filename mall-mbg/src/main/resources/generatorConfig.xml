@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <properties resource="generator.properties"/>
+    <context id="MySqlContext" targetRuntime="MyBatis3" defaultModelType="flat">
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!-- -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <!-- toString() method -->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <!---->
+        <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />
+        <commentGenerator type="com.shawn.mall.CommentGenerator">
+            <!-- remove comment? -->
+            <property name="suppressAllComments" value="true"/>
+            <property name="suppressDate" value="true"/>
+            <property name="addRemarkComments" value="true"/>
+        </commentGenerator>
+        <!--JDBC Connection-->
+        <jdbcConnection driverClass="${jdbc.driverClass}"
+                        connectionURL="${jdbc.connectionURL}"
+                        userId="${jdbc.userId}"
+                        password="${jdbc.password}">
+            <!---->
+            <property name="nullCatalogMeansCurrent" value="true" />
+        </jdbcConnection>
+        <!--model target-->
+        <javaModelGenerator targetPackage="com.shawn.mall.model" targetProject="mall-mbg\src\main\java"/>
+        <!--mapper.xml target-->
+        <sqlMapGenerator targetPackage="com.shawn.mall.mapper" targetProject="mall-mbg\src\main\resources"/>
+        <!--mapper connector src-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.shawn.mall.mapper"
+                             targetProject="mall-mbg\src\main\java"/>
+        <!---->
+        <table tableName="%">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+    </context>
+</generatorConfiguration>

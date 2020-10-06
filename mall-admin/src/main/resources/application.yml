@@ -1,0 +1,70 @@
+spring:
+  application:
+    name: mall-admin
+  profiles:
+    active: dev #default dev
+  servlet:
+    multipart:
+      enabled: true #file upload
+      max-file-size: 10MB #upload size
+
+mybatis:
+  mapper-locations:
+    - classpath:dao/*.xml
+    - classpath*:com/**/mapper/*.xml
+
+jwt:
+  tokenHeader: Authorization #JWT header
+  secret: mall-portal-secret #JWT encode key
+  expiration: 604800 #JWT expiration time (60*60*24*7)
+  tokenHead: 'Bearer' #JWT overload head
+
+# Customize redis key
+redis:
+  database: mall
+  key:
+    admin: 'ums:admin'
+    resourceList: 'ums:resourceList'
+  expire:
+    common: 86400 #24 hrs
+
+secure:
+  ignored:
+    urls: #Safe url
+      - /swagger-ui.html
+      - /swagger-resources/**
+      - /swagger/**
+      - /**/v2/api-docs
+      - /**/*.js
+      - /**/*.css
+      - /**/*.png
+      - /**/*.ico
+      - /webjars/springfox-swagger-ui/**
+      - /actuator/**
+      - /druid/**
+      - /admin/login
+      - /admin/register
+      - /admin/info
+      - /admin/logout
+      - /minio/upload
+
+aliyun:
+  oss:
+    endpoint: oss-cn-shenzhen.aliyuncs.com # oss visit site
+    accessKeyId: test
+    accessKeySecret: test
+    bucketName: shawn-oss # oss save name
+    policy:
+      expire: 300
+    maxSize: 10
+    callback: http://39.98.190.128:8080/aliyun/oss/callback # call back address
+    dir:
+      prefix: mall/images/ # upload folder prefix
+
+minio:
+  endpoint: http://192.168.3.101:9090 #MinIO address
+  bucketName: mall
+  accessKey: minioadmin #key
+  secretKey: minioadmin #password
+
+logging.level.org.springframework.security: DEBUG

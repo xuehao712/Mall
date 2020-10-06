@@ -1,0 +1,52 @@
+spring:
+  application:
+    name: mall-portal
+  profiles:
+    active: dev #default dev
+
+mybatis:
+  mapper-locations:
+    - classpath:dao/*.xml
+    - classpath*:com/**/mapper/*.xml
+
+jwt:
+  tokenHeader: Authorization #JWT header
+  secret: mall-portal-secret #JWT encode key
+  expiration: 604800 #JWT expiration time (60*60*24*7)
+  tokenHead: 'Bearer' #JWT overload head
+
+secure:
+  ignored:
+    urls: #Safe url
+      - /swagger-ui.html
+      - /swagger-resources/**
+      - /swagger/**
+      - /**/v2/api-docs
+      - /**/*.js
+      - /**/*.css
+      - /**/*.png
+      - /**/*.ico
+      - /webjars/springfox-swagger-ui/**
+      - /druid/**
+      - /actuator/**
+      - /sso/**
+      - /home/**
+      - /product/**
+      - /brand/**
+
+# Customize redis key
+redis:
+  database: mall
+  key:
+    authCode: 'ums:authCode'
+    orderId: 'oms:orderId'
+    member: 'ums:member'
+  expire:
+    authCode: 90 #valification expiration time
+    common: 86400 #24 hrs
+
+# Message queue
+rabbitmq:
+  queue:
+    name:
+      cancelOrder: cancelOrderQueue

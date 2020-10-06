@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration>
+<configuration>
+    <!--use default log setting-->
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <!--default log console-->
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+    <!--application name-->
+    <springProperty scope="context" name="APP_NAME" source="spring.application.name" defaultValue="springBoot"/>
+    <!--log file saved path-->
+    <property name="LOG_FILE_PATH" value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}}/logs}"/>
+    <!--LogStash view host-->
+    <springProperty name="LOG_STASH_HOST" scope="context" source="logstash.host" defaultValue="localhost"/>
+
+    <!--debug log console-->
+    <appender name="FILE_DEBUG"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--export debug level log-->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+        <encoder>
+            <!--set to default log pattern-->
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!--file naming pattern-->
+            <fileNamePattern>${LOG_FILE_PATH}/debug/${APP_NAME}-%d{yyyy-MM-dd}-%i.log</fileNamePattern>
+            <!--file max size-->
+            <maxFileSize>${LOG_FILE_MAX_SIZE:-10MB}</maxFileSize>
+            <!--file expire date-->
+            <maxHistory>${LOG_FILE_MAX_HISTORY:-30}</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <!--error log export to file-->
+    <appender name="FILE_ERROR"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--only export error level log-->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <!--default log pattern-->
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!--file naming pattern-->
+            <fileNamePattern>${LOG_FILE_PATH}/error/${APP_NAME}-%d{yyyy-MM-dd}-%i.log</fileNamePattern>
+            <!--file max size, 10mb-->
+            <maxFileSize>${LOG_FILE_MAX_SIZE:-10MB}</maxFileSize>
+            <!--30 day expiration-->
+            <maxHistory>${LOG_FILE_MAX_HISTORY:-30}</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <!--DEBUG log export LogStash-->
+    <appender name="LOG_STASH_DEBUG" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+        <destination>${LOG_STASH_HOST}:4560</destination>
+        <encoder charset="UTF-8" class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <timestamp>
+                    <timeZone>GMT</timeZone>
+                </timestamp>
+                <!--customize log format-->
+                <pattern>
+                    <pattern>
+                        {
+                        "project": "mall",
+                        "level": "%level",
+                        "service": "${APP_NAME:-}",
+                        "pid": "${PID:-}",
+                        "thread": "%thread",
+                        "class": "%logger",
+                        "message": "%message",
+                        "stack_trace": "%exception{20}"
+                        }
+                    </pattern>
+                </pattern>
+            </providers>
+        </encoder>
+    </appender>
+
+    <!--ERROR log export LogStash-->
+    <appender name="LOG_STASH_ERROR" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <destination>${LOG_STASH_HOST}:4561</destination>
+        <encoder charset="UTF-8" class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <timestamp>
+                    <timeZone>gmt</timeZone>
+                </timestamp>
+                <!--customize log format-->
+                <pattern>
+                    <pattern>
+                        {
+                        "project": "mall",
+                        "level": "%level",
+                        "service": "${APP_NAME:-}",
+                        "pid": "${PID:-}",
+                        "thread": "%thread",
+                        "class": "%logger",
+                        "message": "%message",
+                        "stack_trace": "%exception{20}"
+                        }
+                    </pattern>
+                </pattern>
+            </providers>
+        </encoder>
+    </appender>
+
+    <!--business log logStash-->
+    <appender name="LOG_STASH_BUSINESS" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <destination>${LOG_STASH_HOST}:4562</destination>
+        <encoder charset="UTF-8" class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <timestamp>
+                    <timeZone>GMT</timeZone>
+                </timestamp>
+                <!--customize log format-->
+                <pattern>
+                    <pattern>
+                        {
+                        "project": "mall",
+                        "level": "%level",
+                        "service": "${APP_NAME:-}",
+                        "pid": "${PID:-}",
+                        "thread": "%thread",
+                        "class": "%logger",
+                        "message": "%message",
+                        "stack_trace": "%exception{20}"
+                        }
+                    </pattern>
+                </pattern>
+            </providers>
+        </encoder>
+    </appender>
+
+    <!--portal visit log LogStash-->
+    <appender name="LOG_STASH_RECORD" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <destination>${LOG_STASH_HOST}:4563</destination>
+        <encoder charset="UTF-8" class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <timestamp>
+                    <timeZone>GMT</timeZone>
+                </timestamp>
+                <!--customize log format-->
+                <pattern>
+                    <pattern>
+                        {
+                        "project": "mall",
+                        "level": "%level",
+                        "service": "${APP_NAME:-}",
+                        "class": "%logger",
+                        "message": "%message"
+                        }
+                    </pattern>
+                </pattern>
+            </providers>
+        </encoder>
+    </appender>
+
+    <!--frame export log-->
+    <logger name="org.slf4j" level="INFO"/>
+    <logger name="springfox" level="INFO"/>
+    <logger name="io.swagger" level="INFO"/>
+    <logger name="org.springframework" level="INFO"/>
+    <logger name="org.hibernate.validator" level="INFO"/>
+
+    <root level="DEBUG">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE_DEBUG"/>
+        <appender-ref ref="FILE_ERROR"/>
+        <appender-ref ref="LOG_STASH_DEBUG"/>
+        <appender-ref ref="LOG_STASH_ERROR"/>
+    </root>
+
+    <logger name="com.macro.mall.common.log.WebLogAspect" level="DEBUG">
+        <appender-ref ref="LOG_STASH_RECORD"/>
+    </logger>
+
+    <logger name="com.macro.mall" level="DEBUG">
+        <appender-ref ref="LOG_STASH_BUSINESS"/>
+    </logger>
+</configuration>
