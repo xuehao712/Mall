@@ -76,8 +76,8 @@ public class PmsProduct implements Serializable {
     @ApiModelProperty(value = "product weight, default pound")
     private BigDecimal weight;
 
-    @ApiModelProperty(value = "whether pcomment product：0->no；1->yes")
-    private Integer commentStatus;
+    @ApiModelProperty(value = "whether preview product：0->no；1->yes")
+    private Integer previewStatus;
 
     @ApiModelProperty(value = "product service id, separate with comma：1->free return；2->refund；3->free shipping")
     private String serviceIds;
@@ -330,12 +330,12 @@ public class PmsProduct implements Serializable {
         this.weight = weight;
     }
 
-    public Integer getCommentStatus() {
-        return commentStatus;
+    public Integer getPreviewStatus() {
+        return previewStatus;
     }
 
-    public void setCommentStatus(Integer commentStatus) {
-        this.commentStatus = commentStatus;
+    public void setPreviewStatus(Integer previewStatus) {
+        this.previewStatus = previewStatus;
     }
 
     public String getServiceIds() {
@@ -490,7 +490,7 @@ public class PmsProduct implements Serializable {
         sb.append(", lowStock=").append(lowStock);
         sb.append(", unit=").append(unit);
         sb.append(", weight=").append(weight);
-        sb.append(", commentStatus=").append(commentStatus);
+        sb.append(", previewStatus=").append(previewStatus);
         sb.append(", serviceIds=").append(serviceIds);
         sb.append(", keywords=").append(keywords);
         sb.append(", note=").append(note);

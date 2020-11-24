@@ -47,9 +47,8 @@
                   ca.address_name ca_address_name,
                   ca.`name` ca_name,
                   ca.phone ca_phone,
-                  ca.province ca_province,
+                  ca.state ca_state,
                   ca.city ca_city,
-                  ca.region ca_region,
                   ca.detail_address ca_detail_address
         FROM
             oms_order_return_apply ra

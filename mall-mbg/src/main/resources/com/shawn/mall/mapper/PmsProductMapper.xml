@@ -28,7 +28,7 @@
     <result column="low_stock" jdbcType="INTEGER" property="lowStock" />
     <result column="unit" jdbcType="VARCHAR" property="unit" />
     <result column="weight" jdbcType="DECIMAL" property="weight" />
-    <result column="comment_status" jdbcType="INTEGER" property="commentStatus" />
+    <result column="preview_status" jdbcType="INTEGER" property="previewStatus" />
     <result column="service_ids" jdbcType="VARCHAR" property="serviceIds" />
     <result column="keywords" jdbcType="VARCHAR" property="keywords" />
     <result column="note" jdbcType="VARCHAR" property="note" />
@@ -109,7 +109,7 @@
     id, brand_id, product_category_id, freight_template_id, product_attribute_category_id, 
     name, pic, product_sn, delete_status, publish_status, new_status, recommend_status, 
     verify_status, sort, sale, price, promotion_price, gift_growth, gift_point, use_point_limit, 
-    sub_title, original_price, stock, low_stock, unit, weight, comment_status, service_ids, 
+    sub_title, original_price, stock, low_stock, unit, weight, preview_status, service_ids, 
     keywords, note, album_pics, detail_title, promotion_start_time, promotion_end_time, 
     promotion_per_limit, promotion_type, brand_name, product_category_name
   </sql>
@@ -176,7 +176,7 @@
       promotion_price, gift_growth, gift_point, 
       use_point_limit, sub_title, original_price, 
       stock, low_stock, unit, 
-      weight, comment_status, service_ids, 
+      weight, preview_status, service_ids, 
       keywords, note, album_pics, 
       detail_title, promotion_start_time, promotion_end_time, 
       promotion_per_limit, promotion_type, brand_name, 
@@ -190,7 +190,7 @@
       #{promotionPrice,jdbcType=DECIMAL}, #{giftGrowth,jdbcType=INTEGER}, #{giftPoint,jdbcType=INTEGER}, 
       #{usePointLimit,jdbcType=INTEGER}, #{subTitle,jdbcType=VARCHAR}, #{originalPrice,jdbcType=DECIMAL}, 
       #{stock,jdbcType=INTEGER}, #{lowStock,jdbcType=INTEGER}, #{unit,jdbcType=VARCHAR}, 
-      #{weight,jdbcType=DECIMAL}, #{commentStatus,jdbcType=INTEGER}, #{serviceIds,jdbcType=VARCHAR}, 
+      #{weight,jdbcType=DECIMAL}, #{previewStatus,jdbcType=INTEGER}, #{serviceIds,jdbcType=VARCHAR}, 
       #{keywords,jdbcType=VARCHAR}, #{note,jdbcType=VARCHAR}, #{albumPics,jdbcType=VARCHAR}, 
       #{detailTitle,jdbcType=VARCHAR}, #{promotionStartTime,jdbcType=TIMESTAMP}, #{promotionEndTime,jdbcType=TIMESTAMP}, 
       #{promotionPerLimit,jdbcType=INTEGER}, #{promotionType,jdbcType=INTEGER}, #{brandName,jdbcType=VARCHAR}, 
@@ -278,8 +278,8 @@
       <if test="weight != null">
         weight,
       </if>
-      <if test="commentStatus != null">
-        comment_status,
+      <if test="previewStatus != null">
+        preview_status,
       </if>
       <if test="serviceIds != null">
         service_ids,
@@ -403,8 +403,8 @@
       <if test="weight != null">
         #{weight,jdbcType=DECIMAL},
       </if>
-      <if test="commentStatus != null">
-        #{commentStatus,jdbcType=INTEGER},
+      <if test="previewStatus != null">
+        #{previewStatus,jdbcType=INTEGER},
       </if>
       <if test="serviceIds != null">
         #{serviceIds,jdbcType=VARCHAR},
@@ -540,8 +540,8 @@
       <if test="record.weight != null">
         weight = #{record.weight,jdbcType=DECIMAL},
       </if>
-      <if test="record.commentStatus != null">
-        comment_status = #{record.commentStatus,jdbcType=INTEGER},
+      <if test="record.previewStatus != null">
+        preview_status = #{record.previewStatus,jdbcType=INTEGER},
       </if>
       <if test="record.serviceIds != null">
         service_ids = #{record.serviceIds,jdbcType=VARCHAR},
@@ -621,7 +621,7 @@
       low_stock = #{record.lowStock,jdbcType=INTEGER},
       unit = #{record.unit,jdbcType=VARCHAR},
       weight = #{record.weight,jdbcType=DECIMAL},
-      comment_status = #{record.commentStatus,jdbcType=INTEGER},
+      preview_status = #{record.previewStatus,jdbcType=INTEGER},
       service_ids = #{record.serviceIds,jdbcType=VARCHAR},
       keywords = #{record.keywords,jdbcType=VARCHAR},
       note = #{record.note,jdbcType=VARCHAR},
@@ -669,7 +669,7 @@
       low_stock = #{record.lowStock,jdbcType=INTEGER},
       unit = #{record.unit,jdbcType=VARCHAR},
       weight = #{record.weight,jdbcType=DECIMAL},
-      comment_status = #{record.commentStatus,jdbcType=INTEGER},
+      preview_status = #{record.previewStatus,jdbcType=INTEGER},
       service_ids = #{record.serviceIds,jdbcType=VARCHAR},
       keywords = #{record.keywords,jdbcType=VARCHAR},
       note = #{record.note,jdbcType=VARCHAR},
@@ -763,8 +763,8 @@
       <if test="weight != null">
         weight = #{weight,jdbcType=DECIMAL},
       </if>
-      <if test="commentStatus != null">
-        comment_status = #{commentStatus,jdbcType=INTEGER},
+      <if test="previewStatus != null">
+        preview_status = #{previewStatus,jdbcType=INTEGER},
       </if>
       <if test="serviceIds != null">
         service_ids = #{serviceIds,jdbcType=VARCHAR},
@@ -841,7 +841,7 @@
       low_stock = #{lowStock,jdbcType=INTEGER},
       unit = #{unit,jdbcType=VARCHAR},
       weight = #{weight,jdbcType=DECIMAL},
-      comment_status = #{commentStatus,jdbcType=INTEGER},
+      preview_status = #{previewStatus,jdbcType=INTEGER},
       service_ids = #{serviceIds,jdbcType=VARCHAR},
       keywords = #{keywords,jdbcType=VARCHAR},
       note = #{note,jdbcType=VARCHAR},
@@ -886,7 +886,7 @@
       low_stock = #{lowStock,jdbcType=INTEGER},
       unit = #{unit,jdbcType=VARCHAR},
       weight = #{weight,jdbcType=DECIMAL},
-      comment_status = #{commentStatus,jdbcType=INTEGER},
+      preview_status = #{previewStatus,jdbcType=INTEGER},
       service_ids = #{serviceIds,jdbcType=VARCHAR},
       keywords = #{keywords,jdbcType=VARCHAR},
       note = #{note,jdbcType=VARCHAR},

@@ -1716,63 +1716,63 @@ public class PmsProductExample {
             return (Criteria) this;
         }
 
-        public Criteria andCommentStatusIsNull() {
-            addCriterion("comment_status is null");
+        public Criteria andPreviewStatusIsNull() {
+            addCriterion("preview_status is null");
             return (Criteria) this;
         }
 
-        public Criteria andCommentStatusIsNotNull() {
-            addCriterion("comment_status is not null");
+        public Criteria andPreviewStatusIsNotNull() {
+            addCriterion("preview_status is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCommentStatusEqualTo(Integer value) {
-            addCriterion("comment_status =", value, "commentStatus");
+        public Criteria andPreviewStatusEqualTo(Integer value) {
+            addCriterion("preview_status =", value, "previewStatus");
             return (Criteria) this;
         }
 
-        public Criteria andCommentStatusNotEqualTo(Integer value) {
-            addCriterion("comment_status <>", value, "commentStatus");
+        public Criteria andPreviewStatusNotEqualTo(Integer value) {
+            addCriterion("preview_status <>", value, "previewStatus");
             return (Criteria) this;
         }
 
-        public Criteria andCommentStatusGreaterThan(Integer value) {
-            addCriterion("comment_status >", value, "commentStatus");
+        public Criteria andPreviewStatusGreaterThan(Integer value) {
+            addCriterion("preview_status >", value, "previewStatus");
             return (Criteria) this;
         }
 
-        public Criteria andCommentStatusGreaterThanOrEqualTo(Integer value) {
-            addCriterion("comment_status >=", value, "commentStatus");
+        public Criteria andPreviewStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("preview_status >=", value, "previewStatus");
             return (Criteria) this;
         }
 
-        public Criteria andCommentStatusLessThan(Integer value) {
-            addCriterion("comment_status <", value, "commentStatus");
+        public Criteria andPreviewStatusLessThan(Integer value) {
+            addCriterion("preview_status <", value, "previewStatus");
             return (Criteria) this;
         }
 
-        public Criteria andCommentStatusLessThanOrEqualTo(Integer value) {
-            addCriterion("comment_status <=", value, "commentStatus");
+        public Criteria andPreviewStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("preview_status <=", value, "previewStatus");
             return (Criteria) this;
         }
 
-        public Criteria andCommentStatusIn(List<Integer> values) {
-            addCriterion("comment_status in", values, "commentStatus");
+        public Criteria andPreviewStatusIn(List<Integer> values) {
+            addCriterion("preview_status in", values, "previewStatus");
             return (Criteria) this;
         }
 
-        public Criteria andCommentStatusNotIn(List<Integer> values) {
-            addCriterion("comment_status not in", values, "commentStatus");
+        public Criteria andPreviewStatusNotIn(List<Integer> values) {
+            addCriterion("preview_status not in", values, "previewStatus");
             return (Criteria) this;
         }
 
-        public Criteria andCommentStatusBetween(Integer value1, Integer value2) {
-            addCriterion("comment_status between", value1, value2, "commentStatus");
+        public Criteria andPreviewStatusBetween(Integer value1, Integer value2) {
+            addCriterion("preview_status between", value1, value2, "previewStatus");
             return (Criteria) this;
         }
 
-        public Criteria andCommentStatusNotBetween(Integer value1, Integer value2) {
-            addCriterion("comment_status not between", value1, value2, "commentStatus");
+        public Criteria andPreviewStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("preview_status not between", value1, value2, "previewStatus");
             return (Criteria) this;
         }
 

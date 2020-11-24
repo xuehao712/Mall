@@ -10,6 +10,7 @@ import com.shawn.mall.mapper.SmsCouponProductCategoryRelationMapper;
 import com.shawn.mall.mapper.SmsCouponProductRelationMapper;
 import com.shawn.mall.model.*;
 import com.shawn.mall.service.SmsCouponService;
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -99,7 +100,10 @@ public class SmsCouponServiceImpl implements SmsCouponService {
                 couponProductCategoryRelation.setCouponId(couponParam.getId());
             }
             deleteProductCategoryRelation(id);
-            productCategoryRelationDao.insertList(couponParam.getProductCategoryRelationList());
+            if(CollectionUtils.isNotEmpty((couponParam.getProductCategoryRelationList()))){
+                productCategoryRelationDao.insertList(couponParam.getProductCategoryRelationList());
+            }
+
         }
         return count;
     }

@@ -192,7 +192,7 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
         order.setReceiverName(address.getName());
         order.setReceiverPhone(address.getPhoneNumber());
         order.setReceiverZipCode(address.getZipCode());
-        order.setReceiverState(address.getProvince());
+        order.setReceiverState(address.getState());
         order.setReceiverCity(address.getCity());
         order.setReceiverDetailAddress(address.getDetailAddress());
         //0->confirmed 1->unconfirmed
