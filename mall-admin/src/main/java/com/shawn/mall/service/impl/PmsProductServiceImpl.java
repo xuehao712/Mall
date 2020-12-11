@@ -25,7 +25,6 @@ import java.util.stream.Collectors;
 
 /**
  * product Service impl
- * Created by macro on 2018/4/26.
  */
 @Service
 public class PmsProductServiceImpl implements PmsProductService {

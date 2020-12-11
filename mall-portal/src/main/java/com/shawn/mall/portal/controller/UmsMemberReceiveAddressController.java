@@ -1,8 +1,8 @@
 package com.shawn.mall.portal.controller;
 
-import com.macro.mall.common.api.CommonResult;
-import com.macro.mall.model.UmsMemberReceiveAddress;
-import com.macro.mall.portal.service.UmsMemberReceiveAddressService;
+import com.shawn.mall.common.api.CommonResult;
+import com.shawn.mall.model.UmsMemberReceiveAddress;
+import com.shawn.mall.portal.service.UmsMemberReceiveAddressService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,17 +12,16 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * 会员收货地址管理Controller
- * Created by macro on 2018/8/28.
+ * member delivery address Controller
  */
 @Controller
-@Api(tags = "UmsMemberReceiveAddressController", description = "会员收货地址管理")
+@Api(tags = "UmsMemberReceiveAddressController", description = "Member delivery control")
 @RequestMapping("/member/address")
 public class UmsMemberReceiveAddressController {
     @Autowired
     private UmsMemberReceiveAddressService memberReceiveAddressService;
 
-    @ApiOperation("添加收货地址")
+    @ApiOperation("Add address")
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult add(@RequestBody UmsMemberReceiveAddress address) {
@@ -33,7 +32,7 @@ public class UmsMemberReceiveAddressController {
         return CommonResult.failed();
     }
 
-    @ApiOperation("删除收货地址")
+    @ApiOperation("Delete address")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult delete(@PathVariable Long id) {
@@ -44,7 +43,7 @@ public class UmsMemberReceiveAddressController {
         return CommonResult.failed();
     }
 
-    @ApiOperation("修改收货地址")
+    @ApiOperation("Modify")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult update(@PathVariable Long id, @RequestBody UmsMemberReceiveAddress address) {
@@ -55,7 +54,7 @@ public class UmsMemberReceiveAddressController {
         return CommonResult.failed();
     }
 
-    @ApiOperation("显示所有收货地址")
+    @ApiOperation("Show all addresses")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<List<UmsMemberReceiveAddress>> list() {
@@ -63,7 +62,7 @@ public class UmsMemberReceiveAddressController {
         return CommonResult.success(addressList);
     }
 
-    @ApiOperation("获取收货地址详情")
+    @ApiOperation("get detail")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<UmsMemberReceiveAddress> getItem(@PathVariable Long id) {

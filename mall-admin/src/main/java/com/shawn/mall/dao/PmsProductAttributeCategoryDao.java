@@ -6,7 +6,6 @@ import java.util.List;
 
 /**
  * product attribute Dao
- * Created by macro on 2018/5/24.
  */
 public interface PmsProductAttributeCategoryDao {
     /**

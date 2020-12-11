@@ -7,7 +7,6 @@ import java.util.List;
 
 /**
  * prodcut and subject relation Dao
- * Created by macro on 2018/4/26.
  */
 public interface CmsSubjectProductRelationDao {
     /**

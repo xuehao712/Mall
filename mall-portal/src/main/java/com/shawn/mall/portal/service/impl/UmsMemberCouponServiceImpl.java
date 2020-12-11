@@ -11,7 +11,6 @@ import com.shawn.mall.portal.service.UmsMemberCouponService;
 import com.shawn.mall.portal.service.UmsMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sun.jvm.hotspot.utilities.Assert;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

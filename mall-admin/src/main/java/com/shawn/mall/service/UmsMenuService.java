@@ -7,7 +7,6 @@ import java.util.List;
 
 /**
  * Admin menu service
- * Created by macro on 2020/2/2.
  */
 public interface UmsMenuService {
     /**

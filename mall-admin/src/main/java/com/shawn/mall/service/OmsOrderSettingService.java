@@ -4,7 +4,6 @@ import com.shawn.mall.model.OmsOrderSetting;
 
 /**
  * order setting Service
- * Created by macro on 2018/10/16.
  */
 public interface OmsOrderSettingService {
     /**

@@ -8,7 +8,6 @@ import java.util.List;
 
 /**
  * Order Service
- * Created by macro on 2018/10/11.
  */
 public interface OmsOrderService {
     /**

@@ -10,7 +10,6 @@ import java.util.List;
 
 /**
  * Order Dao
- * Created by macro on 2018/10/12.
  */
 public interface OmsOrderDao {
     /**

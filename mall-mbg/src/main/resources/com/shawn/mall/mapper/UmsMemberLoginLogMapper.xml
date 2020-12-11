@@ -8,7 +8,7 @@
     <result column="ip" jdbcType="VARCHAR" property="ip" />
     <result column="city" jdbcType="VARCHAR" property="city" />
     <result column="login_type" jdbcType="INTEGER" property="loginType" />
-    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -69,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, member_id, create_time, ip, city, login_type, province
+    id, member_id, create_time, ip, city, login_type, state
   </sql>
   <select id="selectByExample" parameterType="com.shawn.mall.model.UmsMemberLoginLogExample" resultMap="BaseResultMap">
     select
@@ -106,10 +106,10 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into ums_member_login_log (member_id, create_time, ip, 
-      city, login_type, province
+      city, login_type, state
       )
     values (#{memberId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{ip,jdbcType=VARCHAR}, 
-      #{city,jdbcType=VARCHAR}, #{loginType,jdbcType=INTEGER}, #{province,jdbcType=VARCHAR}
+      #{city,jdbcType=VARCHAR}, #{loginType,jdbcType=INTEGER}, #{state,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.shawn.mall.model.UmsMemberLoginLog">
@@ -133,8 +133,8 @@
       <if test="loginType != null">
         login_type,
       </if>
-      <if test="province != null">
-        province,
+      <if test="state != null">
+        state,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -153,8 +153,8 @@
       <if test="loginType != null">
         #{loginType,jdbcType=INTEGER},
       </if>
-      <if test="province != null">
-        #{province,jdbcType=VARCHAR},
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -185,8 +185,8 @@
       <if test="record.loginType != null">
         login_type = #{record.loginType,jdbcType=INTEGER},
       </if>
-      <if test="record.province != null">
-        province = #{record.province,jdbcType=VARCHAR},
+      <if test="record.state != null">
+        state = #{record.state,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -201,7 +201,7 @@
       ip = #{record.ip,jdbcType=VARCHAR},
       city = #{record.city,jdbcType=VARCHAR},
       login_type = #{record.loginType,jdbcType=INTEGER},
-      province = #{record.province,jdbcType=VARCHAR}
+      state = #{record.state,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -224,8 +224,8 @@
       <if test="loginType != null">
         login_type = #{loginType,jdbcType=INTEGER},
       </if>
-      <if test="province != null">
-        province = #{province,jdbcType=VARCHAR},
+      <if test="state != null">
+        state = #{state,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
@@ -237,7 +237,7 @@
       ip = #{ip,jdbcType=VARCHAR},
       city = #{city,jdbcType=VARCHAR},
       login_type = #{loginType,jdbcType=INTEGER},
-      province = #{province,jdbcType=VARCHAR}
+      state = #{state,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

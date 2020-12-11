@@ -6,7 +6,6 @@ import java.util.List;
 
 /**
  * Company address Service
- * Created by macro on 2018/10/18.
  */
 public interface OmsCompanyAddressService {
     /**

@@ -18,7 +18,7 @@ public class UmsMemberLoginLog implements Serializable {
     @ApiModelProperty(value = "login platform：0->PC；1->android;2->ios;3->other")
     private Integer loginType;
 
-    private String province;
+    private String state;
 
     private static final long serialVersionUID = 1L;
 
@@ -70,12 +70,12 @@ public class UmsMemberLoginLog implements Serializable {
         this.loginType = loginType;
     }
 
-    public String getProvince() {
-        return province;
+    public String getState() {
+        return state;
     }
 
-    public void setProvince(String province) {
-        this.province = province;
+    public void setState(String state) {
+        this.state = state;
     }
 
     @Override
@@ -90,7 +90,7 @@ public class UmsMemberLoginLog implements Serializable {
         sb.append(", ip=").append(ip);
         sb.append(", city=").append(city);
         sb.append(", loginType=").append(loginType);
-        sb.append(", province=").append(province);
+        sb.append(", state=").append(state);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

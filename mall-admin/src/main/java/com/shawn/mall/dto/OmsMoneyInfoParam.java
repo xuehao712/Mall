@@ -8,7 +8,6 @@ import java.math.BigDecimal;
 
 /**
  * Modify order money info param
- * Created by macro on 2018/10/29.
  */
 @Getter
 @Setter

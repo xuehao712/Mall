@@ -7,7 +7,6 @@ import java.util.List;
 
 /**
  * member ladder price Dao
- * Created by macro on 2018/4/26.
  */
 public interface PmsProductLadderDao {
     /**

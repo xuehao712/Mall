@@ -20,7 +20,7 @@ public class UmsMemberReceiveAddress implements Serializable {
     private String zipCode;
 
     @ApiModelProperty(value = "state")
-    private String province;
+    private String state;
 
     @ApiModelProperty(value = "city")
     private String city;
@@ -78,12 +78,12 @@ public class UmsMemberReceiveAddress implements Serializable {
         this.zipCode = zipCode;
     }
 
-    public String getProvince() {
-        return province;
+    public String getState() {
+        return state;
     }
 
-    public void setProvince(String province) {
-        this.province = province;
+    public void setState(String state) {
+        this.state = state;
     }
 
     public String getCity() {
@@ -114,7 +114,7 @@ public class UmsMemberReceiveAddress implements Serializable {
         sb.append(", phoneNumber=").append(phoneNumber);
         sb.append(", defaultStatus=").append(defaultStatus);
         sb.append(", zipCode=").append(zipCode);
-        sb.append(", province=").append(province);
+        sb.append(", state=").append(state);
         sb.append(", city=").append(city);
         sb.append(", detailAddress=").append(detailAddress);
         sb.append(", serialVersionUID=").append(serialVersionUID);
