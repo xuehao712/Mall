@@ -42,10 +42,7 @@ mall
 | Elasticsearch        | Search Engine              | https://github.com/elastic/elasticsearch             |
 | Redis                | Distributed cache          | https://redis.io/                                    |
 | Druid                | Database connection pool   | https://github.com/alibaba/druid                     |
-| OSS                  | Object save                | https://github.com/aliyun/aliyun-oss-java-sdk        |
-| MinIO                | Object save                | https://github.com/minio/minio                       |
 | JWT                  | JWT login support          | https://github.com/jwtk/jjwt                         |
-| LogStash             | log collection             | https://github.com/logstash/logstash-logback-encoder |
 | Lombok               | simplify Encapsulation     | https://github.com/rzwitserloot/lombok               |
 
 #### Frontend
